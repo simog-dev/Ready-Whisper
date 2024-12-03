@@ -24,7 +24,7 @@ This script uses the "turbo" model of Whisper, which is the best in terms of tra
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/whisper-transcription.git
+    git clone https://github.com/simog-dev/Ready-Whisper.git
     cd whisper-transcription
     ```
 
