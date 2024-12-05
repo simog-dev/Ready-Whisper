@@ -2,6 +2,11 @@
 
 A Python script for transcribing audio and video files using the [Whisper](https://github.com/openai/whisper) model.
 
+## Requirements
+- Python 3.7+
+- ffmpeg (required by Whisper, see [installation instructions](https://github.com/openai/whisper))
+- CUDA-compatible GPU (optional, for acceleration)
+
 ## Features
 
 - **Language-Specific Transcription:** Specify the language for transcription through command-line arguments.
@@ -14,10 +19,7 @@ A Python script for transcribing audio and video files using the [Whisper](https
 
 This script uses the "turbo" model of Whisper, which is the best in terms of transcription accuracy and computation performance.
 
-## Requirements and Installation
-
-- **Python 3.7+**
-- [Whisper](https://github.com/openai/whisper)
+## Installation
 
 1. **Clone the repository:**
 
