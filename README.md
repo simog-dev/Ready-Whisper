@@ -1,6 +1,6 @@
 # Whisper Transcription
 
-A Python script for transcribing audio files using the [Whisper](https://github.com/openai/whisper) model.
+A Python script for transcribing audio and video files using the [Whisper](https://github.com/openai/whisper) model.
 
 ## Features
 
