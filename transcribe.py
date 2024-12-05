@@ -6,7 +6,17 @@ import logging
 import time
 import argparse
 
-
+def check_gpu_status():
+    """Funzione diagnostica per verificare lo stato della GPU"""
+    logger = logging.getLogger(__name__)
+    logger.info("=== GPU Diagnostic Info ===")
+    logger.info(f"CUDA available: {torch.cuda.is_available()}")
+    logger.info(f"CUDA version: {torch.version.cuda}")
+    if torch.cuda.is_available():
+        logger.info(f"CUDA device count: {torch.cuda.device_count()}")
+        logger.info(f"Current CUDA device: {torch.cuda.current_device()}")
+        logger.info(f"Device name: {torch.cuda.get_device_name(0)}")
+    logger.info("========================")
 
 def get_transcription_path(audio_file):
     """Get the path where the transcription should be saved"""
@@ -30,25 +40,32 @@ def main():
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
+    # Aggiungiamo diagnostica GPU
+    check_gpu_status()
+
     parser = argparse.ArgumentParser(description="Transcribe audio files using Whisper.")
     parser.add_argument('--language', type=str, default='en', help='Language for transcription. Default: en')
-    parser.add_argument('--model', type=str, default='base', help='Whisper model to use (e.g., base, small, medium, large, turbo). Default')
+    parser.add_argument('--model', type=str, default='turbo', help='Whisper model to use (e.g., base, small, medium, large, turbo). Default: turbo')
     args = parser.parse_args()
 
     start_time_total = time.time()
     files_processed = 0
 
-    # Verifica e log del device
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    # Modifichiamo la gestione del device
+    if not torch.cuda.is_available():
+        logger.warning("CUDA non disponibile. Usando CPU.")
+        device = "cpu"
+    else:
+        device = "cuda"
+        torch.cuda.empty_cache()  # Puliamo la memoria GPU prima di iniziare
+        
     logger.info(f"Using device: {device}")
-    if device == "cuda":
-        logger.info(f"GPU Model: {torch.cuda.get_device_name(0)}")
-        logger.info(f"Available GPU memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB")
 
     try:
-        # Load Whisper model con log
-        logger.info("Loading Whisper model...")
-        model = whisper.load_model(args.model).to(device)
+        # Modifichiamo il caricamento del modello
+        logger.info(f"Loading Whisper model on {device}...")
+        model = whisper.load_model(args.model)
+        model = model.to(device)  # Spostiamo esplicitamente il modello sul device
         logger.info("Model loaded successfully")
         
         # Get current directory

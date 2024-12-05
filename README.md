@@ -25,12 +25,14 @@ This script uses the "turbo" model of Whisper, which is the best in terms of tra
 
     ```bash
     git clone https://github.com/simog-dev/Ready-Whisper.git
-    cd whisper-transcription
+    cd Ready-Whisper
     ```
 
 2. **Install the dependencies:**
-
-    - Follow [Whisper](https://github.com/openai/whisper) instructions
+```bash
+pip install -r requirements.txt
+```
+- **You must have 'ffmpeg' installed on your system**, for further instructions please see [Whisper](https://github.com/openai/whisper)
 
 ## Usage
 
@@ -40,7 +42,7 @@ Run the transcription script with the desired language and model:
 python transcribe.py --language en --model turbo
 ```
 
-Replace en with the appropriate language code (e.g., it for Italian) and turbo with the desired model (e.g., base, small, medium, large, turbo). By default english language and turbo model are selected.
+Replace **en** with the appropriate language code (e.g., it for Italian) and **turbo** with the desired model (e.g., base, small, medium, large, turbo). By default english language and turbo model are selected.
 
 Note: If no language is specified, the default language is set to English (en). Only medium, large and turbo models support multilingual transcription.
 
