@@ -15,10 +15,6 @@ A Python script for transcribing audio and video files using the [Whisper](https
 - **Automated Directory Handling:** Processes all audio files within specified directories and organizes transcriptions accordingly.
 - **Error Handling:** Gracefully handles errors during transcription, ensuring uninterrupted processing of remaining files.
 
-## Model
-
-This script uses the "turbo" model of Whisper, which is the best in terms of transcription accuracy and computation performance.
-
 ## Installation
 
 1. **Clone the repository:**
@@ -42,9 +38,10 @@ Run the transcription script with the desired language and model:
 python transcribe.py --language en --model turbo
 ```
 
-Replace **en** with the appropriate language code (e.g., it for Italian) and **turbo** with the desired model (e.g., base, small, medium, large, turbo). By default english language and turbo model are selected.
+- Replace **en** with the appropriate language code (e.g., it for Italian) and **turbo** with the desired model (e.g., base, small, medium, large, turbo). 
+- By default english language and turbo model are selected.
 
-Note: If no language is specified, the default language is set to English (en). Only medium, large and turbo models support multilingual transcription.
+- **Note**: Only medium, large and turbo models support multilingual transcription. For further details please see [Whisper](https://github.com/openai/whisper) repository.
 
 ## Configuration
 
