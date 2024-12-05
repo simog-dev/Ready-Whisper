@@ -10,16 +10,14 @@ A Python script for transcribing audio and video files using the [Whisper](https
 - **Automated Directory Handling:** Processes all audio files within specified directories and organizes transcriptions accordingly.
 - **Error Handling:** Gracefully handles errors during transcription, ensuring uninterrupted processing of remaining files.
 
-## Requirements
-
-- **Python 3.7+**
-- [Whisper](https://github.com/openai/whisper)
-
 ## Model
 
 This script uses the "turbo" model of Whisper, which is the best in terms of transcription accuracy and computation performance.
 
-## Installation
+## Requirements and Installation
+
+- **Python 3.7+**
+- [Whisper](https://github.com/openai/whisper)
 
 1. **Clone the repository:**
 
@@ -29,10 +27,10 @@ This script uses the "turbo" model of Whisper, which is the best in terms of tra
     ```
 
 2. **Install the dependencies:**
-```bash
-pip install -r requirements.txt
-```
-- **You must have 'ffmpeg' installed on your system**, for further instructions please see [Whisper](https://github.com/openai/whisper)
+    ```bash
+    pip install -r requirements.txt
+    ```
+    - **You must have 'ffmpeg' installed on your system**, for further instructions please see [Whisper](https://github.com/openai/whisper)
 
 ## Usage
 
